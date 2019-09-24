@@ -4,8 +4,8 @@
 #include <sys/time.h>
 #include <omp.h>
 
-#define N 500 
-#define NO_TRIES 10
+#define N 1000 
+#define NO_TRIES 10 
 
 typedef long long int64;
 typedef unsigned long long uint64;
@@ -24,6 +24,7 @@ void matmult_naive_no_opt(double **a, double **b, double **res) {
         }
     }
 }
+
 void matmult_naive_tiling(double **a, double **b, double **res) {
     int i, j, x;
     double acc00, acc01, acc10, acc11;
@@ -43,6 +44,44 @@ void matmult_naive_tiling(double **a, double **b, double **res) {
         }
     }
 }
+
+void matmult_naive_parallel(double **a, double **b, double **res) {
+    int i, j, x;
+    double acc;
+#pragma omp parallel for shared(a, b, res) private(i, j, x, acc) schedule(static)
+    for(i=0; i<N; i++) {
+        for(j=0; j<N; j++) { 
+            acc = 0.0;
+            for(x=0; x<N; x++) {
+                acc += a[i][x] * b[x][j];
+            }
+            res[i][j] = acc;
+        }
+    }
+}
+
+void matmult_naive_parallel_tiling(double **a, double **b, double **res) {
+    int i, j, x;
+    double acc00, acc01, acc10, acc11;
+#pragma omp parallel for shared(a, b, res) private(i, j, x, acc00, acc01, acc10, acc11) schedule(static)
+    for(i=0; i<N-1; i+=2) {
+        for(j=0; j<N-1; j+=2) { 
+            acc00 = acc01 = acc10 = acc11 = 0.0;
+            for(x=0; x<N; x++) {
+                acc00 += a[i + 0][x] * b[x][j + 0];
+                acc01 += a[i + 0][x] * b[x][j + 1];
+                acc10 += a[i + 1][x] * b[x][j + 0];
+                acc11 += a[i + 1][x] * b[x][j + 1];
+            }
+            res[i + 0][j + 0] = acc00;
+            res[i + 0][j + 1] = acc01;
+            res[i + 1][j + 0] = acc10;
+            res[i + 1][j + 1] = acc11;
+        }
+    }
+}
+
+
 
 /* int matmult_naive_no_opt(double **a, double **b, double **res) {
     int i, j, x;
@@ -153,10 +192,19 @@ int main() {
     printf("Average time %llums\n", average_elapsed);
     print_mat(res);
 
-    printf("Testing naive algorithm with no optimisations.. ");
+    printf("Testing naive algorithm with nested loop tiling.. ");
     average_elapsed = benchmark_matmult_func(a, b, res, matmult_naive_tiling);
     printf("Average time %llums\n", average_elapsed);
     print_mat(res);
 
+    printf("Testing naive algorithm with openmp parallelization.. ");
+    average_elapsed = benchmark_matmult_func(a, b, res, matmult_naive_parallel);
+    printf("Average time %llums\n", average_elapsed);
+    print_mat(res);
+    
+    printf("Testing naive algorithm with openmp parallelization and tiling.. ");
+    average_elapsed = benchmark_matmult_func(a, b, res, matmult_naive_parallel_tiling);
+    printf("Average time %llums\n", average_elapsed);
+    print_mat(res);
     return 0;
 }
