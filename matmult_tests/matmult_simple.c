@@ -4,16 +4,16 @@
 #include <sys/time.h>
 #include <omp.h>
 
-#define N 1000 
-#define NO_TRIES 10 
+#define N 500
+#define NO_TRIES 1
 
 typedef long long int64;
 typedef unsigned long long uint64;
 
 
-void matmult_naive_no_opt(double **a, double **b, double **res) {
+void matmult_naive_no_opt(float **a, float **b, float **res) {
     int i, j, x;
-    double acc;
+    float acc;
     for(i=0; i<N; i++) {
         for(j=0; j<N; j++) { 
             acc = 0.0;
@@ -25,29 +25,43 @@ void matmult_naive_no_opt(double **a, double **b, double **res) {
     }
 }
 
-void matmult_naive_tiling(double **a, double **b, double **res) {
-    int i, j, x;
-    double acc00, acc01, acc10, acc11;
-    for(i=0; i<N-1; i+=2) {
-        for(j=0; j<N-1; j+=2) { 
-            acc00 = acc01 = acc10 = acc11 = 0.0;
-            for(x=0; x<N; x++) {
-                acc00 += a[i + 0][x] * b[x][j + 0];
-                acc01 += a[i + 0][x] * b[x][j + 1];
-                acc10 += a[i + 1][x] * b[x][j + 0];
-                acc11 += a[i + 1][x] * b[x][j + 1];
+// DOES NOT WORK FOR ODD Ns TODO
+void matmult_naive_tiling(float **a, float **b, float **res) {
+    int ii, i, j, kk, k;
+    float acc00, acc01, acc10, acc11;   
+
+    int ib = 30, kb = 30;
+    for (ii = 0; ii < N; ii += ib) {
+        for (kk = 0; kk < N; kk += kb) {
+            for (j=0; j < N; j += 2) {
+                for(i = ii; i < ii + ib; i += 2 ) {
+                    if (kk == 0)
+                        acc00 = acc01 = acc10 = acc11 = 0;
+                    else {
+                        acc00 = res[i + 0][j + 0];
+                        acc01 = res[i + 0][j + 1];
+                        acc10 = res[i + 1][j + 0];
+                        acc11 = res[i + 1][j + 1];
+                    }
+                    for (k = kk; k < kk + kb; k++) {
+                        acc00 += b[k][j + 0] * a[i + 0][k];
+                        acc01 += b[k][j + 1] * a[i + 0][k];
+                        acc10 += b[k][j + 0] * a[i + 1][k];
+                        acc11 += b[k][j + 1] * a[i + 1][k];
+                    }
+                    res[i + 0][j + 0] = acc00;
+                    res[i + 0][j + 1] = acc01;
+                    res[i + 1][j + 0] = acc10;
+                    res[i + 1][j + 1] = acc11;
+                }
             }
-            res[i + 0][j + 0] = acc00;
-            res[i + 0][j + 1] = acc01;
-            res[i + 1][j + 0] = acc10;
-            res[i + 1][j + 1] = acc11;
         }
     }
 }
 
-void matmult_naive_parallel(double **a, double **b, double **res) {
+void matmult_naive_parallel(float **a, float **b, float **res) {
     int i, j, x;
-    double acc;
+    float acc;
 #pragma omp parallel for shared(a, b, res) private(i, j, x, acc) schedule(static)
     for(i=0; i<N; i++) {
         for(j=0; j<N; j++) { 
@@ -60,53 +74,41 @@ void matmult_naive_parallel(double **a, double **b, double **res) {
     }
 }
 
-void matmult_naive_parallel_tiling(double **a, double **b, double **res) {
-    int i, j, x;
-    double acc00, acc01, acc10, acc11;
-#pragma omp parallel for shared(a, b, res) private(i, j, x, acc00, acc01, acc10, acc11) schedule(static)
-    for(i=0; i<N-1; i+=2) {
-        for(j=0; j<N-1; j+=2) { 
-            acc00 = acc01 = acc10 = acc11 = 0.0;
-            for(x=0; x<N; x++) {
-                acc00 += a[i + 0][x] * b[x][j + 0];
-                acc01 += a[i + 0][x] * b[x][j + 1];
-                acc10 += a[i + 1][x] * b[x][j + 0];
-                acc11 += a[i + 1][x] * b[x][j + 1];
-            }
-            res[i + 0][j + 0] = acc00;
-            res[i + 0][j + 1] = acc01;
-            res[i + 1][j + 0] = acc10;
-            res[i + 1][j + 1] = acc11;
-        }
-    }
-}
+// DOES NOT WORK FOR ODD Ns TODO
+void matmult_naive_parallel_tiling(float **a, float **b, float **res) {
+    int ii, i, j, kk, k;
+    float acc00, acc01, acc10, acc11;   
 
-
-
-/* int matmult_naive_no_opt(double **a, double **b, double **res) {
-    int i, j, x;
-    double acc00, acc01, acc10, acc11;
-#pragma omp parallel shared(a, b, res) private(i, j, x, acc00)//, acc01, acc10, acc11)
-    {
-#pragma omp for schedule(static)
-        for(i=0; i<N-1; i+=2) {
-            for(j=0; j<N-1; j+=2) { 
-                acc00 = 0.0;//acc01 = acc10 = acc11 = 0.0;
-                for(x=0; x<N; x++) {
-                    acc00 += a[i + 0][x] * b[x][j + 0];
-                    acc01 += a[i + 0][x] * b[x][j + 1];
-                    acc10 += a[i + 1][x] * b[x][j + 0];
-                    acc11 += a[i + 1][x] * b[x][j + 1];
+    int ib = 30, kb = 30;
+#pragma omp parallel for shared(a, b, res, ib, kb) private(i, ii, j, k, kk, acc00, acc01, acc10, acc11) schedule(static)
+    for (ii = 0; ii < N; ii += ib) {
+        for (kk = 0; kk < N; kk += kb) {
+            for (j=0; j < N; j += 2) {
+                for(i = ii; i < ii + ib; i += 2 ) {
+                    if (kk == 0)
+                        acc00 = acc01 = acc10 = acc11 = 0;
+                    else {
+                        acc00 = res[i + 0][j + 0];
+                        acc01 = res[i + 0][j + 1];
+                        acc10 = res[i + 1][j + 0];
+                        acc11 = res[i + 1][j + 1];
+                    }
+                    for (k = kk; k < kk + kb; k++) {
+                        acc00 += b[k][j + 0] * a[i + 0][k];
+                        acc01 += b[k][j + 1] * a[i + 0][k];
+                        acc10 += b[k][j + 0] * a[i + 1][k];
+                        acc11 += b[k][j + 1] * a[i + 1][k];
+                    }
+                    res[i + 0][j + 0] = acc00;
+                    res[i + 0][j + 1] = acc01;
+                    res[i + 1][j + 0] = acc10;
+                    res[i + 1][j + 1] = acc11;
                 }
-                res[i + 0][j + 0] += acc00;
-                res[i + 0][j + 1] += acc10;
-                res[i + 1][j + 0] += acc01;
-                res[i + 1][j + 1] += acc11;
             }
         }
     }
 }
-*/
+
 uint64 get_time() {
     /* Linux */
     struct timeval tv;
@@ -123,27 +125,31 @@ uint64 get_time() {
     return ret;
 }
 
-void print_mat(double** res) {
+// to verify the results in matlab/octave
+void print_mat(float** res, const char* var_name) {
     // written to stderr to ignore at execution
+    fprintf(stderr, "%s = [", var_name);
     for(int i=0; i<N; i++) {
         for(int j=0; j<N; j++) {
             fprintf(stderr, "%g ", res[i][j]);
         }
-        fprintf(stderr, "\n");
+        fprintf(stderr, "%s\n",(i==N-1)?"":";");
     }
+    fprintf(stderr, "];\n");
 }
 
-void init_rand(double** a, double** b) {
+void init_rand(float** a, float** b) {
     // init random a and b
+    int max_val = 10;
     for(int i=0; i<N; i++) {
         for(int j=0; j<N; j++) {
-            a[i][j] = ((double) (rand()%1000000)) / 100000;
-            b[i][j] = ((double) (rand()%1000000)) / 100000;
+            a[i][j] = ((float) rand())/((float) RAND_MAX) * max_val;
+            b[i][j] = ((float) rand())/((float) RAND_MAX) * max_val;
         }
     }
 }
 
-uint64 benchmark_matmult_func(double** a, double** b, double** res, void (*f)(double**,double**,double**)) {
+uint64 benchmark_matmult_func(float** a, float** b, float** res, void (*f)(float**,float**,float**)) {
     uint64 strt, end, elapsed, total_elapsed = 0;
 
     for (int i=0; i<NO_TRIES; i++) {
@@ -154,57 +160,72 @@ uint64 benchmark_matmult_func(double** a, double** b, double** res, void (*f)(do
 
         elapsed = end - strt;
         // printf("Elapsed time %llums\n", elapsed);
-        
+
         total_elapsed += elapsed;
     }
-    return ((double)total_elapsed)/NO_TRIES;
+    return ((float)total_elapsed)/NO_TRIES;
 }
 
-int main() {
+int main(int argc, char** argv) {
     srand(time(NULL));
+    if(argc != 2) {
+        printf("Write the optimisation level as first argument\n");
+        exit(1);
+    }
+    // going to assume the first argument is the optimisation level
+    const char* opt_level = argv[1];
+
+    FILE* csv_out = fopen("output.csv", "a");
+
+    omp_set_num_threads(4);
 
     printf ( "The number of processors available = %d\n", omp_get_num_procs());
     printf ( "The number of threads available    = %d\n\n", omp_get_max_threads());
 
     // init matrices
-    double **a   = malloc(sizeof(double*) * N),
-           **b   = malloc(sizeof(double*) * N),
-           **res = malloc(sizeof(double*) * N);
+    float **a   = malloc(sizeof(float*) * N),
+           **b   = malloc(sizeof(float*) * N),
+           **res = malloc(sizeof(float*) * N);
     for(int i=0; i<N; i++) {
-        a[i] = malloc(sizeof(double) * N);
-        b[i] = malloc(sizeof(double) * N);
-        res[i] = malloc(sizeof(double) * N);
+        a[i] = malloc(sizeof(float) * N);
+        b[i] = malloc(sizeof(float) * N);
+        res[i] = malloc(sizeof(float) * N);
     }
-    
+
     // int a[N][N], b[N][N], res[N][N];
-    
+
     init_rand(a, b);
 
-    print_mat(a);
-    print_mat(b); 
-    
+    print_mat(a, "A");
+    print_mat(b, "B"); 
+
     uint64 average_elapsed;
     printf("Testing matrix multiplication for two %dx%d matrices, taking the average of %d tries\n\n", N, N, NO_TRIES);
-
 
     printf("Testing naive algorithm with no optimisations.. ");
     average_elapsed = benchmark_matmult_func(a, b, res, matmult_naive_no_opt);
     printf("Average time %llums\n", average_elapsed);
-    print_mat(res);
+    print_mat(res, "C1");
+    fprintf(csv_out, "%s:%d:no opt:%lld\n", opt_level, N, average_elapsed);
 
     printf("Testing naive algorithm with nested loop tiling.. ");
     average_elapsed = benchmark_matmult_func(a, b, res, matmult_naive_tiling);
     printf("Average time %llums\n", average_elapsed);
-    print_mat(res);
+    print_mat(res, "C2");
+    fprintf(csv_out, "%s:%d:with opt:%lld\n", opt_level, N, average_elapsed);
 
     printf("Testing naive algorithm with openmp parallelization.. ");
     average_elapsed = benchmark_matmult_func(a, b, res, matmult_naive_parallel);
     printf("Average time %llums\n", average_elapsed);
-    print_mat(res);
+    print_mat(res, "C3");
+    fprintf(csv_out, "%s:%d:parallel:%lld\n", opt_level, N, average_elapsed);
     
     printf("Testing naive algorithm with openmp parallelization and tiling.. ");
     average_elapsed = benchmark_matmult_func(a, b, res, matmult_naive_parallel_tiling);
     printf("Average time %llums\n", average_elapsed);
-    print_mat(res);
+    print_mat(res, "C4");
+    fprintf(csv_out, "%s:%d:with opt+parallel:%lld\n", opt_level, N, average_elapsed);
+
+    fclose(csv_out);
     return 0;
 }

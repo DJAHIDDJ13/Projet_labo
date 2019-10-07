@@ -1,0 +1,176 @@
+-O0:250:no opt:76
+-O0:250:with opt:56
+-O0:250:parallel:30
+-O0:250:with opt+parallel:27
+-O1:250:no opt:25
+-O1:250:with opt:8
+-O1:250:parallel:11
+-O1:250:with opt+parallel:6
+-O2:250:no opt:27
+-O2:250:with opt:11
+-O2:250:parallel:11
+-O2:250:with opt+parallel:6
+-O3:250:no opt:25
+-O3:250:with opt:8
+-O3:250:parallel:10
+-O3:250:with opt+parallel:6
+-O0:500:no opt:639
+-O0:500:with opt:480
+-O0:500:parallel:238
+-O0:500:with opt+parallel:146
+-O1:500:no opt:227
+-O1:500:with opt:62
+-O1:500:parallel:63
+-O1:500:with opt+parallel:42
+-O2:500:no opt:229
+-O2:500:with opt:70
+-O2:500:parallel:64
+-O2:500:with opt+parallel:29
+-O3:500:no opt:215
+-O3:500:with opt:75
+-O3:500:parallel:60
+-O3:500:with opt+parallel:21
+-O0:750:no opt:2296
+-O0:750:with opt:1667
+-O0:750:parallel:669
+-O0:750:with opt+parallel:473
+-O1:750:no opt:766
+-O1:750:with opt:227
+-O1:750:parallel:247
+-O1:750:with opt+parallel:78
+-O2:750:no opt:810
+-O2:750:with opt:235
+-O2:750:parallel:238
+-O2:750:with opt+parallel:78
+-O3:750:no opt:790
+-O3:750:with opt:220
+-O3:750:parallel:249
+-O3:750:with opt+parallel:73
+-O0:1000:no opt:6912
+-O0:1000:with opt:3812
+-O0:1000:parallel:1910
+-O0:1000:with opt+parallel:1207
+-O1:1000:no opt:2316
+-O1:1000:with opt:573
+-O1:1000:parallel:1003
+-O1:1000:with opt+parallel:184
+-O2:1000:no opt:2364
+-O2:1000:with opt:542
+-O2:1000:parallel:725
+-O2:1000:with opt+parallel:159
+-O3:1000:no opt:2336
+-O3:1000:with opt:487
+-O3:1000:parallel:707
+-O3:1000:with opt+parallel:182
+-O0:1250:no opt:16998
+-O0:1250:with opt:7227
+-O0:1250:parallel:4756
+-O0:1250:with opt+parallel:2141
+-O1:1250:no opt:6134
+-O1:1250:with opt:978
+-O1:1250:parallel:1892
+-O1:1250:with opt+parallel:316
+-O2:1250:no opt:5703
+-O2:1250:with opt:1300
+-O2:1250:parallel:1844
+-O2:1250:with opt+parallel:382
+-O3:1250:no opt:6293
+-O3:1250:with opt:1068
+-O3:1250:parallel:1827
+-O3:1250:with opt+parallel:378
+-O0:1500:no opt:36501
+-O0:1500:with opt:12551
+-O0:1500:parallel:10809
+-O0:1500:with opt+parallel:4166
+-O1:1500:no opt:20395
+-O1:1500:with opt:1898
+-O1:1500:parallel:6244
+-O1:1500:with opt+parallel:598
+-O2:1500:no opt:19698
+-O2:1500:with opt:1839
+-O2:1500:parallel:6014
+-O2:1500:with opt+parallel:572
+-O3:1500:no opt:19223
+-O3:1500:with opt:1407
+-O3:1500:parallel:5889
+-O3:1500:with opt+parallel:512
+-O0:1750:no opt:60894
+-O0:1750:with opt:16634
+-O0:1750:parallel:18601
+-O0:1750:with opt+parallel:5290
+-O1:1750:no opt:50715
+-O1:1750:with opt:2313
+-O1:1750:parallel:16201
+-O1:1750:with opt+parallel:787
+-O2:1750:no opt:55912
+-O2:1750:with opt:2335
+-O2:1750:parallel:16109
+-O2:1750:with opt+parallel:700
+-O3:1750:no opt:48147
+-O3:1750:with opt:2286
+-O3:1750:parallel:12082
+-O3:1750:with opt+parallel:720
+-O0:2000:no opt:104515
+-O0:2000:with opt:26478
+-O0:2000:parallel:31579
+-O0:2000:with opt+parallel:7844
+-O1:2000:no opt:94958
+-O1:2000:with opt:3680
+-O1:2000:parallel:28320
+-O1:2000:with opt+parallel:1121
+-O2:2000:no opt:93055
+-O2:2000:with opt:3260
+-O2:2000:parallel:27553
+-O2:2000:with opt+parallel:1159
+-O3:2000:no opt:94823
+-O3:2000:with opt:3716
+-O3:2000:parallel:27948
+-O3:2000:with opt+parallel:1076
+-O0:2250:no opt:158845
+-O0:2250:with opt:38425
+-O0:2250:parallel:44927
+-O0:2250:with opt+parallel:10684
+-O1:2250:no opt:141441
+-O1:2250:with opt:5143
+-O1:2250:parallel:42956
+-O1:2250:with opt+parallel:1682
+-O2:2250:no opt:111027
+-O2:2250:with opt:4860
+-O2:2250:parallel:31811
+-O2:2250:with opt+parallel:1655
+-O3:2250:no opt:142362
+-O3:2250:with opt:5897
+-O3:2250:parallel:44727
+-O3:2250:with opt+parallel:1527
+-O0:2500:no opt:241234
+-O0:2500:with opt:49920
+-O0:2500:parallel:70056
+-O0:2500:with opt+parallel:15350
+-O1:2500:no opt:215756
+-O1:2500:with opt:7433
+-O1:2500:parallel:62254
+-O1:2500:with opt+parallel:2488
+-O2:2500:no opt:192605
+-O2:2500:with opt:7512
+-O2:2500:parallel:44721
+-O2:2500:with opt+parallel:2373
+-O3:2500:no opt:216069
+-O3:2500:with opt:7497
+-O3:2500:parallel:61017
+-O3:2500:with opt+parallel:2223
+-O0:2750:no opt:290825
+-O0:2750:with opt:67285
+-O0:2750:parallel:84463
+-O0:2750:with opt+parallel:20687
+-O1:2750:no opt:244572
+-O1:2750:with opt:10293
+-O1:2750:parallel:59587
+-O1:2750:with opt+parallel:3225
+-O2:2750:no opt:277512
+-O2:2750:with opt:12741
+-O2:2750:parallel:86450
+-O2:2750:with opt+parallel:3547
+-O3:2750:no opt:279254
+-O3:2750:with opt:11721
+-O3:2750:parallel:81469
+-O3:2750:with opt+parallel:3189
