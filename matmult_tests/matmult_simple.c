@@ -4,7 +4,7 @@
 #include <sys/time.h>
 #include <omp.h>
 
-#define N 500
+#define N 100
 #define NO_TRIES 1
 
 typedef long long int64;
@@ -28,13 +28,15 @@ void matmult_naive_no_opt(float **a, float **b, float **res) {
 // DOES NOT WORK FOR ODD Ns TODO
 void matmult_naive_tiling(float **a, float **b, float **res) {
     int ii, i, j, kk, k;
-    float acc00, acc01, acc10, acc11;   
+    float acc00, acc01, acc10, acc11;
 
-    int ib = 30, kb = 30;
+    int ib = 30, kb = 30, ilim, klim, lim;
     for (ii = 0; ii < N; ii += ib) {
         for (kk = 0; kk < N; kk += kb) {
             for (j=0; j < N; j += 2) {
-                for(i = ii; i < ii + ib; i += 2 ) {
+                lim = ii+ib;
+                ilim = (lim > N)? N: lim;
+                for(i = ii; i < ilim; i += 2 ) {
                     if (kk == 0)
                         acc00 = acc01 = acc10 = acc11 = 0;
                     else {
@@ -43,7 +45,9 @@ void matmult_naive_tiling(float **a, float **b, float **res) {
                         acc10 = res[i + 1][j + 0];
                         acc11 = res[i + 1][j + 1];
                     }
-                    for (k = kk; k < kk + kb; k++) {
+                    lim = kk+kb;
+                    klim = (lim > N)? N: lim;
+                    for (k = kk; k < klim; k++) {
                         acc00 += b[k][j + 0] * a[i + 0][k];
                         acc01 += b[k][j + 1] * a[i + 0][k];
                         acc10 += b[k][j + 0] * a[i + 1][k];
@@ -84,7 +88,8 @@ void matmult_naive_parallel_tiling(float **a, float **b, float **res) {
     for (ii = 0; ii < N; ii += ib) {
         for (kk = 0; kk < N; kk += kb) {
             for (j=0; j < N; j += 2) {
-                for(i = ii; i < ii + ib; i += 2 ) {
+                int ilim = (ii+ib > N)? N: ii+ib;
+                for(i = ii; i < ilim; i += 2 ) {
                     if (kk == 0)
                         acc00 = acc01 = acc10 = acc11 = 0;
                     else {
@@ -93,7 +98,8 @@ void matmult_naive_parallel_tiling(float **a, float **b, float **res) {
                         acc10 = res[i + 1][j + 0];
                         acc11 = res[i + 1][j + 1];
                     }
-                    for (k = kk; k < kk + kb; k++) {
+                    int klim = (kk+kb > N)? N: kk+kb;
+                    for (k = kk; k < klim; k++) {
                         acc00 += b[k][j + 0] * a[i + 0][k];
                         acc01 += b[k][j + 1] * a[i + 0][k];
                         acc10 += b[k][j + 0] * a[i + 1][k];

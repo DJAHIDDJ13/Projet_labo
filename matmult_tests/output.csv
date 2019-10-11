@@ -174,3 +174,83 @@
 -O3:2750:with opt:11721
 -O3:2750:parallel:81469
 -O3:2750:with opt+parallel:3189
+-O0:500:no opt:496
+-O0:500:with opt:355
+-O0:500:parallel:159
+-O0:500:with opt+parallel:425
+-O0:1000:no opt:5785
+-O0:1000:with opt:2832
+-O0:1000:parallel:1640
+-O0:1000:with opt+parallel:946
+-O0:1000:no opt:5813
+-O0:1000:with opt:3261
+-O0:1000:parallel:1847
+-O0:1000:with opt+parallel:1126
+-O1:1000:no opt:2002
+-O1:1000:with opt:457
+-O1:1000:parallel:814
+-O1:1000:with opt+parallel:200
+-O1:1000:no opt:2064
+-O1:1000:with opt:460
+-O1:1000:parallel:758
+-O1:1000:with opt+parallel:212
+-O1:500:no opt:198
+-O1:500:with opt:73
+-O1:500:parallel:65
+-O1:500:with opt+parallel:28
+-O1:500:no opt:200
+-O1:500:with opt:61
+-O1:500:parallel:63
+-O1:500:with opt+parallel:26
+-O0:500:no opt:584
+-O0:500:with opt:369
+-O0:500:parallel:240
+-O0:500:with opt+parallel:154
+-O0:501:no opt:585
+-O0:501:with opt:381
+-O0:501:parallel:174
+-O0:501:with opt+parallel:145
+-O0:500:no opt:500
+-O0:500:with opt:317
+-O0:500:parallel:167
+-O0:500:with opt+parallel:144
+-O1:500:no opt:186
+-O1:500:with opt:56
+-O1:500:parallel:63
+-O1:500:with opt+parallel:25
+-O0:500:no opt:494
+-O0:500:with opt:321
+-O0:500:parallel:166
+-O0:500:with opt+parallel:151
+-O0:10:no opt:0
+-O0:10:with opt:0
+-O0:10:parallel:1
+-O0:10:with opt+parallel:0
+-O0:10:no opt:3
+-O0:10:with opt:2
+-O0:10:parallel:163
+-O0:10:with opt+parallel:7
+-O0:10:no opt:6
+-O0:10:with opt:5
+-O0:10:parallel:208
+-O0:10:with opt+parallel:6
+-O0:10:no opt:3
+-O0:10:with opt:3
+-O0:10:parallel:143
+-O0:10:with opt+parallel:6
+-O0:10:no opt:3
+-O0:10:with opt:17
+-O0:10:parallel:15136
+-O0:10:with opt+parallel:5
+-O0:10:no opt:3
+-O0:10:with opt:3
+-O0:10:parallel:25583
+-O0:10:with opt+parallel:23753
+-O0:100:no opt:5698
+-O0:100:with opt:2671
+-O0:100:parallel:13808
+-O0:100:with opt+parallel:10315
+-O0:100:no opt:4
+-O0:100:with opt:3
+-O0:100:parallel:13
+-O0:100:with opt+parallel:11
