@@ -254,3 +254,94 @@
 -O0:100:with opt:3
 -O0:100:parallel:13
 -O0:100:with opt+parallel:11
+-O0:100:no opt:9
+-O0:100:with opt:3
+-O0:100:parallel:4
+-O0:100:with opt+parallel:6
+-O1:100:no opt:1
+-O1:100:with opt:0
+-O1:100:parallel:1
+-O1:100:with opt+parallel:0
+-O2:100:no opt:1
+-O2:100:with opt:6
+-O2:100:parallel:6
+-O2:100:with opt+parallel:5
+-O3:100:no opt:1
+-O3:100:with opt:0
+-O3:100:parallel:7
+-O3:100:with opt+parallel:4
+-O0:1000:no opt:4878
+-O0:1000:with opt:2639
+-O0:1000:parallel:4838
+-O0:1000:with opt+parallel:2477
+-O1:1000:no opt:1632
+-O1:1000:with opt:372
+-O1:1000:parallel:1825
+-O1:1000:with opt+parallel:387
+-O0:1000:no opt:4784
+-O0:1000:with opt:2613
+-O0:1000:parallel:4535
+-O0:1000:with opt+parallel:2545
+-O0:1000:no opt:4509
+-O0:1000:with opt:2497
+-O0:1000:parallel:2497
+-O0:1000:with opt+parallel:2534
+-O1:1000:no opt:1546
+-O1:1000:with opt:468
+-O1:1000:parallel:468
+-O1:1000:with opt+parallel:429
+-O0:1000:no opt:4811
+-O0:1000:with opt:2745
+-O0:1000:with opt+parallel:2688
+-O1:1000:no opt:1685
+-O1:1000:with opt:385
+-O1:1000:with opt+parallel:336
+-O2:1000:no opt:1635
+-O2:1000:with opt:383
+-O2:1000:with opt+parallel:326
+-O3:1000:no opt:1646
+-O3:1000:with opt:385
+-O3:1000:with opt+parallel:332
+-O0:1000:no opt:4750
+-O0:1000:with opt:2543
+-O0:1000:with opt+parallel:2654
+-O0:1000:no opt:5175
+-O0:1000:with opt:2640
+-O0:1000:with opt+parallel:905
+-O1:1000:no opt:1910
+-O1:1000:with opt:413
+-O1:1000:with opt+parallel:116
+-O0:1000:no opt:5220
+-O0:1000:with opt:2538
+-O0:1000:with opt+parallel:981
+-O0:1000:no opt:4530
+-O0:1000:with opt:2490
+-O0:1000:with opt+parallel:843
+-O0:100:no opt:3
+-O0:100:with opt:5
+-O0:100:parallel:2
+-O0:100:with opt+parallel:2
+-O1:100:no opt:1
+-O1:100:with opt:1
+-O1:100:parallel:13
+-O1:100:with opt+parallel:0
+-O2:100:no opt:2
+-O2:100:with opt:1
+-O2:100:parallel:0
+-O2:100:with opt+parallel:4
+-O3:100:no opt:2
+-O3:100:with opt:1
+-O3:100:parallel:2
+-O3:100:with opt+parallel:12
+-O0:1000:no opt:5022
+-O0:1000:with opt:2710
+-O0:1000:parallel:1457
+-O0:1000:with opt+parallel:994
+-O1:1000:no opt:1727
+-O1:1000:with opt:382
+-O1:1000:parallel:506
+-O1:1000:with opt+parallel:167
+-O2:1000:no opt:1760
+-O2:1000:with opt:382
+-O2:1000:parallel:533
+-O2:1000:with opt+parallel:151

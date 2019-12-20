@@ -1,0 +1,18 @@
+\begin{thebibliography}{1}
+
+\bibitem{dataloc:1}
+M.~E. Wolf and M.~Lam, ``A data locality optimizing algorithm,'' {\em Computer
+  Systems Laboratory Stanford University, CA 94305}, 1991.
+
+\bibitem{looptil:1}
+M.~Wolfe, ``More iteration space tiling,'' {\em Oregon Graduate Center}, 1989.
+
+\bibitem{looptilpar:1}
+J.~Xue, {\em Loop Tiling for Parallelism}.
+\newblock Kluwer Academic Publishers, 2000.
+
+\bibitem{dramsram:1}
+U.~Drepper, ``What every programmer should know about memory,'' {\em Red Hat,
+  Inc.}, 2007.
+
+\end{thebibliography}

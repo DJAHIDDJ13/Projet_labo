@@ -4,7 +4,7 @@
 #include <sys/time.h>
 #include <omp.h>
 
-#define N 100
+#define N 1000
 #define NO_TRIES 1
 
 typedef long long int64;

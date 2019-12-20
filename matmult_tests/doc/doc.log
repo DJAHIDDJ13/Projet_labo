@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.9.27)  7 OCT 2019 14:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.11.1)  20 DEC 2019 21:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -66,15 +66,15 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \lst@maxwidth=\dimen108
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
+File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
 \c@lstnumber=\count94
 \lst@skipnumbers=\count95
 \lst@framebox=\box28
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2019/02/27 1.8b listings configuration
+File: listings.cfg 2019/09/10 1.8c listings configuration
 ))
-Package: listings 2019/02/27 1.8b (Carsten Heinz)
+Package: listings 2019/09/10 1.8c (Carsten Heinz)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
@@ -92,39 +92,88 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks19
 \@floatcapt=\box30
 )
+(/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
+\c@tracingmulticols=\count97
+\mult@box=\box31
+\multicol@leftmargin=\dimen109
+\c@unbalance=\count98
+\c@collectmore=\count99
+\doublecol@number=\count100
+\multicoltolerance=\count101
+\multicolpretolerance=\count102
+\full@width=\dimen110
+\page@free=\dimen111
+\premulticols=\dimen112
+\postmulticols=\dimen113
+\multicolsep=\skip43
+\multicolbaselineskip=\skip44
+\partial@page=\box32
+\last@line=\box33
+\maxbalancingoverflow=\dimen114
+\mult@rightbox=\box34
+\mult@grightbox=\box35
+\mult@gfirstbox=\box36
+\mult@firstbox=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\@tempa=\box50
+\@tempa=\box51
+\@tempa=\box52
+\@tempa=\box53
+\@tempa=\box54
+\c@columnbadness=\count103
+\c@finalcolumnbadness=\count104
+\last@try=\dimen115
+\multicolovershoot=\dimen116
+\multicolundershoot=\dimen117
+\mult@nat@firstbox=\box55
+\colbreak@box=\box56
+\mc@col@check@num=\count105
+)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2019/02/27 1.8b listings language file
+File: lstlang1.sty 2019/09/10 1.8c listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
+File: lstmisc.sty 2019/09/10 1.8c (Carsten Heinz)
 ) (./doc.aux)
 \openout1 = `doc.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
+LaTeX Font Info:    ... okay on input line 39.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count97
-\scratchdimen=\dimen109
-\scratchbox=\box31
-\nofMPsegments=\count98
-\nofMParguments=\count99
+\scratchcounter=\count106
+\scratchdimen=\dimen118
+\scratchbox=\box57
+\nofMPsegments=\count107
+\nofMParguments=\count108
 \everyMPshowfont=\toks20
-\MPscratchCnt=\count100
-\MPscratchDim=\dimen110
-\MPnumerator=\count101
-\makeMPintoPDFobject=\count102
+\MPscratchCnt=\count109
+\MPscratchDim=\dimen119
+\MPnumerator=\count110
+\makeMPintoPDFobject=\count111
 \everyMPtoPDFconversion=\toks21
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -177,93 +226,201 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count103
+\c@lstlisting=\count112
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 37.
+(Font)              <12> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 37.
+(Font)              <8> on input line 40.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 37.
+(Font)              <6> on input line 40.
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<plot/no_opt.pdf, id=9, 462.52798pt x 346.89601pt>
-File: plot/no_opt.pdf Graphic file (type pdf)
-<use plot/no_opt.pdf>
-Package pdftex.def Info: plot/no_opt.pdf  used on input line 62.
-(pdftex.def)             Requested size: 345.0pt x 258.76337pt.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./doc.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 3.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 3.
+)
+\tf@toc=\write3
+\openout3 = `doc.toc'.
+
  [2]
-Overfull \hbox (4.4728pt too wide) in paragraph at lines 67--68
-[]\OT1/cmr/m/n/10 Ce que nous pou-vons re-mar-quer ici, c'est que l'effet des n
-iveaux d'optimisation
+Underfull \hbox (badness 10000) in paragraph at lines 45--54
+
  []
 
-[3 <./plot/no_opt.pdf>]
-<plot/with_opt.pdf, id=57, 462.52798pt x 346.89601pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 61--65
+
+ []
+
+<plot/no_opt.pdf, id=15, 462.52798pt x 346.89601pt>
+File: plot/no_opt.pdf Graphic file (type pdf)
+<use plot/no_opt.pdf>
+Package pdftex.def Info: plot/no_opt.pdf  used on input line 93.
+(pdftex.def)             Requested size: 345.0pt x 258.76337pt.
+[3] [4 <./plot/no_opt.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 130--134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--149
+
+ []
+
+<plot/with_opt.pdf, id=65, 462.52798pt x 346.89601pt>
 File: plot/with_opt.pdf Graphic file (type pdf)
 <use plot/with_opt.pdf>
-Package pdftex.def Info: plot/with_opt.pdf  used on input line 102.
+Package pdftex.def Info: plot/with_opt.pdf  used on input line 156.
 (pdftex.def)             Requested size: 345.0pt x 258.76337pt.
- [4 <./plot/with_opt.pdf>]
-<plot/parallel.pdf, id=103, 462.52798pt x 346.89601pt>
+[5] [6 <./plot/with_opt.pdf>]
+<plot/parallel.pdf, id=114, 462.52798pt x 346.89601pt>
 File: plot/parallel.pdf Graphic file (type pdf)
 <use plot/parallel.pdf>
-Package pdftex.def Info: plot/parallel.pdf  used on input line 125.
+Package pdftex.def Info: plot/parallel.pdf  used on input line 188.
 (pdftex.def)             Requested size: 345.0pt x 258.76337pt.
- [5 <./plot/parallel.pdf>]
-<plot/with_opt+parallel.pdf, id=148, 462.52798pt x 346.89601pt>
+ [7 <./plot/parallel.pdf>]
+<plot/with_opt+parallel.pdf, id=160, 462.52798pt x 346.89601pt>
 File: plot/with_opt+parallel.pdf Graphic file (type pdf)
 <use plot/with_opt+parallel.pdf>
-Package pdftex.def Info: plot/with_opt+parallel.pdf  used on input line 166.
+Package pdftex.def Info: plot/with_opt+parallel.pdf  used on input line 233.
 (pdftex.def)             Requested size: 345.0pt x 258.76337pt.
-<plot/compare_O0.pdf, id=149, 462.52798pt x 346.89601pt>
+<plot/compare_O0.pdf, id=161, 462.52798pt x 346.89601pt>
 File: plot/compare_O0.pdf Graphic file (type pdf)
 <use plot/compare_O0.pdf>
-Package pdftex.def Info: plot/compare_O0.pdf  used on input line 172.
+Package pdftex.def Info: plot/compare_O0.pdf  used on input line 242.
 (pdftex.def)             Requested size: 345.0pt x 258.76337pt.
-
-[6 <./plot/with_opt+parallel.pdf>]
-<plot/compare_O1.pdf, id=192, 462.52798pt x 346.89601pt>
-File: plot/compare_O1.pdf Graphic file (type pdf)
-<use plot/compare_O1.pdf>
-Package pdftex.def Info: plot/compare_O1.pdf  used on input line 178.
-(pdftex.def)             Requested size: 345.0pt x 258.76337pt.
- [7 <./plot/compare_O0.pdf>]
-<plot/compare_O2.pdf, id=238, 462.52798pt x 346.89601pt>
+ [8 <./plot/with_opt+parallel.pdf>]
+<plot/compare_O2.pdf, id=204, 462.52798pt x 346.89601pt>
 File: plot/compare_O2.pdf Graphic file (type pdf)
 <use plot/compare_O2.pdf>
-Package pdftex.def Info: plot/compare_O2.pdf  used on input line 184.
+Package pdftex.def Info: plot/compare_O2.pdf  used on input line 248.
 (pdftex.def)             Requested size: 345.0pt x 258.76337pt.
- [8 <./plot/compare_O1.pdf>]
-<plot/compare_O3.pdf, id=283, 462.52798pt x 346.89601pt>
-File: plot/compare_O3.pdf Graphic file (type pdf)
-<use plot/compare_O3.pdf>
-Package pdftex.def Info: plot/compare_O3.pdf  used on input line 190.
+ [9 <./plot/compare_O0.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 260--263
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 264--267
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 268--272
+
+ []
+
+[10 <./plot/compare_O2.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 273--279
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 299--301
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 302--305
+
+ []
+
+<plot/cacheperf.png, id=293, 359.54324pt x 263.7855pt>
+File: plot/cacheperf.png Graphic file (type png)
+<use plot/cacheperf.png>
+Package pdftex.def Info: plot/cacheperf.png  used on input line 313.
+(pdftex.def)             Requested size: 345.0pt x 253.12251pt.
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 318--322
+
+ []
+
+<plot/dram_sram.jpg, id=298, 373.99725pt x 174.05025pt>
+File: plot/dram_sram.jpg Graphic file (type jpg)
+<use plot/dram_sram.jpg>
+Package pdftex.def Info: plot/dram_sram.jpg  used on input line 339.
+(pdftex.def)             Requested size: 345.0pt x 160.56636pt.
+[12 <./plot/cacheperf.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 345--351
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 352--356
+
+ []
+
+<plot/cachelines.png, id=303, 522.753pt x 375.20175pt>
+File: plot/cachelines.png Graphic file (type png)
+<use plot/cachelines.png>
+Package pdftex.def Info: plot/cachelines.png  used on input line 358.
+(pdftex.def)             Requested size: 345.0pt x 247.61673pt.
+[13 <./plot/dram_sram.jpg>]
+<plot/cachedistr.png, id=309, 514.3215pt x 483.60675pt>
+File: plot/cachedistr.png Graphic file (type png)
+<use plot/cachedistr.png>
+Package pdftex.def Info: plot/cachedistr.png  used on input line 372.
+(pdftex.def)             Requested size: 345.0pt x 324.39856pt.
+ [14 <./plot/cachelines.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 377--381
+
+ []
+
+[15 <./plot/cachedistr.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 467--470
+
+ []
+
+[16]
+<plot/hebbres.pdf, id=321, 462.52798pt x 346.89601pt>
+File: plot/hebbres.pdf Graphic file (type pdf)
+<use plot/hebbres.pdf>
+Package pdftex.def Info: plot/hebbres.pdf  used on input line 482.
 (pdftex.def)             Requested size: 345.0pt x 258.76337pt.
- [9 <./plot/compare_O2.pdf>] [10 <./plot/compare_O3.pdf>] (./doc.aux)
 
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+Underfull \hbox (badness 10000) in paragraph at lines 488--491
 
- ) 
+ []
+
+[17 <./plot/hebbres.pdf>]
+<plot/kohonenres.pdf, id=362, 462.52798pt x 346.89601pt>
+File: plot/kohonenres.pdf Graphic file (type pdf)
+<use plot/kohonenres.pdf>
+Package pdftex.def Info: plot/kohonenres.pdf  used on input line 507.
+(pdftex.def)             Requested size: 345.0pt x 258.76337pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 513--520
+
+ []
+
+[18 <./plot/kohonenres.pdf>] (./doc.bbl) [19] (./doc.aux) ) 
 Here is how much of TeX's memory you used:
- 3344 strings out of 494553
- 46152 string characters out of 6177377
- 319091 words of memory out of 5000000
- 6986 multiletter control sequences out of 15000+600000
- 8053 words of font info for 29 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 41i,6n,49p,270b,1633s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on doc.pdf (10 pages, 170487 bytes).
+ 3570 strings out of 494451
+ 49368 string characters out of 6174526
+ 362218 words of memory out of 5000000
+ 7209 multiletter control sequences out of 15000+600000
+ 9054 words of font info for 32 fonts, out of 8000000 for 9000
+ 59 hyphenation exceptions out of 8191
+ 41i,7n,49p,270b,1633s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on doc.pdf (19 pages, 672223 bytes).
 PDF statistics:
- 393 PDF objects out of 1000 (max. 8388607)
- 90 compressed objects within 1 object stream
+ 448 PDF objects out of 1000 (max. 8388607)
+ 129 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

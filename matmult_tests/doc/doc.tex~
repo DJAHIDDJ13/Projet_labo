@@ -5,7 +5,6 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{float}
-\usepackage{multicol}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -30,17 +29,18 @@
 
 
 \title{Laboratory project report M1\\
-Parallel programming for neural networks}
+Parallel programming for neural network simulator\\
+ETIS Laboratory\\
+Université de Cergy-Pontoise\\
+\textit{Tuteur:}Philippe GAUSSIER}
 \date{\today}
-\author{Djahid ABDELMOUMENE\\
-\textit{Encadrant technique:}Philippe GAUSSIER\\
-Université de Cergy-Pontoise   ETIS}
+\author{Djahid ABDELMOUMENE}
 
 \begin{document}
 \maketitle
 \newpage
-\tableofcontents
-\newpage
+
+
 \section{Introduction}
 As processors get faster and faster than memory access times, optimisations
 start to become necessary in order to utilize the CPU to its full capacity,
@@ -97,7 +97,7 @@ all the tests here will be on a machine with an intel 7-6700HQ CPU running at
 
 \subsection{Loop nest optimizations}
 Here we have a more optimized version \cite{dataloc:1} \cite{looptil:1}
-\cite{looptilpar:1},  with many optimization techniques used:
+\cite{lootilpar},  with many optimization techniques used:
 \begin{lstlisting}
 int ib = 10, kb = 10;
 for (ii = 0; ii < N; ii += ib) {
@@ -385,145 +385,24 @@ parallelizing the code previously where there was only a 20\% performance
 increase on a 4 core machine, where it should have been 4 times faster.
 
 \section{Solution and results}
-Ideally the best solution would be to turn all the fields of the type\_coeff 
-structure into arrays, and also we would also need to remove the s field that
-references the next coefficient.
-\begin{lstlisting}[numbers=none,frame=none,xleftmargin=3em, multicols=2]
-OLD STRUCT:
+Ideally the best solution would be to turn the type\_coeff structure into 
 
-typedef struct type_coeff {
-  float val;
-  float proba;
-  float Nbre_ES;
-  float Nbre_S;
-  float Nbre_E;
-  int entree;
-  int type;
-  int evolution;
-  float moy;
-  float smoy;
-  int gpe_liaison;
-  struct type_coeff *s;
-} type_coeff;
-NEW STRUCT:
-
-typedef struct type_coeff {
-  float *val;
-  float *proba;
-  float *Nbre_ES;
-  float *Nbre_S;
-  float *Nbre_E;
-  int *entree;
-  int *type;
-  int *evolution;
-  float *moy;
-  float *smoy;
-  int *gpe_liaison;
-} type_coeff;
-\end{lstlisting}
-
-And we would also need to change the type\_neurone structure to have a single
-element of type\_coeff (instead of a pointer):
-\begin{lstlisting}[numbers=none,frame=none,xleftmargin=3em, multicols=2]
-OLD STRUCT:
-
-typedef struct type_neurone {
-   float seuil;
-	int flag;
-	float last_activation;
-	float cste;
-	int groupe;
-	int nbre_voie;
-	int nbre_coeff;
-	int nbre_coeff_neuromod;
-	char max;
-	float posx;
-	float posy;
-	float posz;
-	type_coeff *coeff;    ---->
-	type_coeff *nsor;     ---->
-} type_neurone;
-NEW STRUCT:
-
-typedef struct type_neurone {
-   float seuil;
-	int flag;
-	float last_activation;
-	float cste;
-	int groupe;
-	int nbre_voie;
-	int nbre_coeff;
-	int nbre_coeff_neuromod;
-	char max;
-	float posx;
-	float posy;
-	float posz;
-	type_coeff coeff;
-	type_coeff nsor;
-} type_neurone;
-
-\end{lstlisting}
-
-This of course is a major architectural change and would require a lot of other
-changes and adjustments to the code base, especially the deletion of the s field 
-from the type\_coeff.\\
-
-So instead, for now, in order to benchmark the impact of a similar change on
-the code, two float matrices for the 'val' and 'entree' (named respectively
-coeff\_vals and coeff\_entrees) fields of the coefficients
-were used instead, and were initialized and updated with the same values as the
-actual values from the type\_coeff structure. The changes are limited to the
-hebbian neural network (prom\_user/src/NN\_Core/classique\_rn/trad\_neurone.c)
-and the kohonen self-organizing map (same directory in kohonen.c). and the
-results seem to reflect that the changes solved the bottleneck and the code can
-run in parallel (Figure:\ref{fig:hebbres}) (Figure:\ref{fig:kohonenres}). 
-
-\begin{figure}[h]
-    \includegraphics[width=\linewidth]{plot/hebbres.pdf}
-    \caption{Results of the optimization on hebbian NN}
-    \label{fig:hebbres}
-\end{figure}
-
-\subsection{tests}
-To verify that the program continues to function correctly some tests were created
-that compare results (coefficient values) of the original version of the program
-(without the optimization) with the new version.\\
-
-In order to do this the two versions of the program  were used to compile a test
-.script file with their cc\_leto (used to generate a .res file used when
-executing the promethe simulator) that promps for a seed for the random number
-generator, these programs when launched (using promethe) generate a .SAVE file
-that contains a text version of the coefficients and their values. The idea of
-the test is that given the same random seed, these two .SAVE files should be
-the same for the two versions.
-
-For now these tests still need some more work done on them since they are not
-working. There is still a lot of work to be done here in order to utilize the new
-optimization and there's the question of how much more \textit{should} be done, 
-since these are major changes to a very large code base, and would therefore
-require a lot of time to implement.
-
-\begin{figure}[H]
-    \includegraphics[width=\linewidth]{plot/kohonenres.pdf}
-    \caption{Results of the optimization on kohonen SOM}
-    \label{fig:kohonenres}
-\end{figure}
 
 \section{Conclusion}
 It seems that in order to utilize the cache's fast access time, and to avoid
-memory access bottlenecks. The data needs to be divided into contiguous arrays
-of small chunks (few bytes, float for example) of the same field (for example 'val')
-this makes sure that cache lines will contain more of these small chunks as opposed
-to having an array of a big structure (tens of bytes) which would cause the
-cache lines to only one or two copies of the structure, plummeting the hit rate
-on the cache.\\
+memory access bottlenecks. The treated data needs to be divided into chunks of
+contiguous arrays of the same fields this makes sure that the cache line will
+include many more elements of the same field as opposed to having a single
+structure that contains them which may cause the retrieved data to be of
+different fields.\\
 
 This is a result of the fact that we only use a few fields of the structure at
-any given time (we only use the 'val' and 'entree' fields when updating hebbian
-NN neurones), so most of the cache line is not used and wasted. However when there
-are multiple arrays of each field (floats) or small collection of
+any given time, so most of the data in the same structure is not used together
+all the time.\\
+
+However when there are multiple arrays of each field or small collection of
 fields, we would have more elements of the same type in our cache lines and
-therefore more hits of accelerated memory access of the CPU's cache.
+therefore more hits of accelerated memory access of the CPUs cache.
 
 \newpage
 
