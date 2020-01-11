@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex doc"] 1576873856 "doc.aux" "doc.bbl" "doc" 1576873857
+["bibtex doc"] 1578760207 "doc.aux" "doc.bbl" "doc" 1578760623
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/ieeetr.bst" 1292289607 18361 1a00e58565e7f19bf2b3e1bfb82254ae ""
   "bibliography.bib" 1576870210 657 8320d2b4f40694a37542ef532300265c ""
-  "doc.aux" 1576873857 4150 768940d893e62b839241916cdc9045fd "pdflatex"
+  "doc.aux" 1578760622 4039 df7eac38dab83e785391f12e5a17e398 "pdflatex"
   (generated)
   "doc.bbl"
   "doc.blg"
-["pdflatex"] 1576873857 "doc.tex" "doc.pdf" "doc" 1576873857
+["pdflatex"] 1578760622 "doc.tex" "doc.pdf" "doc" 1578760623
   "/etc/texmf/web2c/texmf.cnf" 1571426104 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -70,10 +70,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1569805182 38933 f2234313a32c900c3aee7d05531772fc ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1572606586 162906 b5baed966202dde2f3dd6ab1f48cb617 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1572606589 903267 72cf248fcf9cc335ce04d073defbe429 ""
-  "doc.aux" 1576873857 4150 768940d893e62b839241916cdc9045fd "pdflatex"
-  "doc.bbl" 1576873857 535 bf10de3aa42f1fe7b3bc335f39744a8f "bibtex doc"
-  "doc.tex" 1576873855 21050 b1f7b596a00d2f27c6b2c0145a378d4f ""
-  "doc.toc" 1576873857 1121 f6a3205347b32e76779c27d7888eacfb "pdflatex"
+  "doc.aux" 1578760622 4039 df7eac38dab83e785391f12e5a17e398 "pdflatex"
+  "doc.bbl" 1578760207 535 bf10de3aa42f1fe7b3bc335f39744a8f "bibtex doc"
+  "doc.tex" 1578760621 21010 246cce8ff8a044583ea704632deec6eb ""
+  "doc.toc" 1578760622 1062 bb16c71a93289153db14cc91a34a5294 "pdflatex"
   "plot/cachedistr.png" 1576864407 59044 c0077f974fe4d251c131ea59838a87fd ""
   "plot/cachelines.png" 1576849955 223476 7ccd2c99c16e37746bdbd4ef4843240d ""
   "plot/cacheperf.png" 1576849955 129381 b7deffc5c15530ccf38c360909edf6e7 ""

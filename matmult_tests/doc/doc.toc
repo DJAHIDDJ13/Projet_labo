@@ -1,17 +1,16 @@
 \contentsline {section}{\numberline {1}Introduction}{3}% 
-\contentsline {section}{\numberline {2}Optimization techniques}{3}% 
+\contentsline {section}{\numberline {2}optimisation techniques}{3}% 
 \contentsline {subsection}{\numberline {2.1}Naive algorithm}{3}% 
-\contentsline {subsection}{\numberline {2.2}Loop nest optimizations}{4}% 
+\contentsline {subsection}{\numberline {2.2}Loop nest optimisations}{4}% 
 \contentsline {subsection}{\numberline {2.3}Parallelization}{6}% 
-\contentsline {subsection}{\numberline {2.4}Perallelization and optimizations}{7}% 
-\contentsline {section}{\numberline {3}Algorithm comparaison}{9}% 
-\contentsline {section}{\numberline {4}Application}{10}% 
-\contentsline {section}{\numberline {5}Code analysis}{10}% 
-\contentsline {section}{\numberline {6}Cause of the problem}{11}% 
-\contentsline {subsection}{\numberline {6.1}The cache memory}{11}% 
-\contentsline {subsubsection}{\numberline {6.1.1}DRAM vs SRAM}{12}% 
-\contentsline {subsubsection}{\numberline {6.1.2}Cache lines}{13}% 
-\contentsline {subsubsection}{\numberline {6.1.3}The cause}{14}% 
-\contentsline {section}{\numberline {7}Solution and results}{15}% 
-\contentsline {subsection}{\numberline {7.1}tests}{17}% 
-\contentsline {section}{\numberline {8}Conclusion}{18}% 
+\contentsline {subsection}{\numberline {2.4}Parallelization and optimisations}{7}% 
+\contentsline {section}{\numberline {3}Algorithm comparison}{9}% 
+\contentsline {section}{\numberline {4}Code analysis}{10}% 
+\contentsline {section}{\numberline {5}Cause of the problem}{11}% 
+\contentsline {subsection}{\numberline {5.1}The cache memory}{11}% 
+\contentsline {subsubsection}{\numberline {5.1.1}DRAM vs SRAM}{12}% 
+\contentsline {subsubsection}{\numberline {5.1.2}Cache lines}{13}% 
+\contentsline {subsubsection}{\numberline {5.1.3}The cause}{14}% 
+\contentsline {section}{\numberline {6}Solution and results}{15}% 
+\contentsline {subsection}{\numberline {6.1}tests}{17}% 
+\contentsline {section}{\numberline {7}Conclusion}{18}% 

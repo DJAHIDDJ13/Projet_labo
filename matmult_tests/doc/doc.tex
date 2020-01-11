@@ -52,24 +52,24 @@ cache or some sort of secondary SRAM that allows faster access times at the
 cost of its storage capacity, which is usually tolerable using some techniques
 that will be discussed later on.\\
 
-The main problem addressed here is the optimization of a neural network simulator
+The main problem addressed here is the optimisation of a neural network simulator
 called 'promethe'. the main objective is to use parallel programming to scale up
 the performance of the simulator, as well as solve memory access bottlenecks that
 are hindering the parallelization of the code.
 
-\section{Optimization techniques}
-In this section we review some optimization techniques that are used to
+\section{optimisation techniques}
+In this section we review some optimisation techniques that are used to
 increase the locality of memory use, that is, increase the reuse of values
 loaded into the cache. We'll also see the syntax of OpenMP parallelization and
 its effects on the performance.\\
 
 To view these techniques well try to optimize matrix multiplication of two
-$NxN$ matrices in C, We will be sticking to the naive algorithm with
+$N\times N$ matrices in C, We will be sticking to the naive algorithm with
 a complexity of $\mathcal{O}(n^3)$.
 
 
 \subsection{Naive algorithm}
-As a baseline for the performance coparaison we'll take the naive version of
+As a baseline for the performance comparison we'll take the naive version of
 the matrix multiplication as shown here:
 
 \begin{lstlisting}
@@ -85,19 +85,19 @@ for(i=0; i<N; i++) {
 \end{lstlisting}
 
 And here we can see the benchmark results of the algorithm with diffrent levels
-of compiler optimization levels (Here we used GCC v9.2), you should note that
+of compiler optimisation levels (Here we used GCC v9.2), you should note that
 all the tests here will be on a machine with an intel 7-6700HQ CPU running at 
 2.60GHz with 4 cores.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{plot/no_opt.pdf}
-    \caption{Naive algorithm perfomance results}
+    \caption{Naive algorithm performance results}
     \label{fig:no_opt}
 \end{figure}
 
-\subsection{Loop nest optimizations}
+\subsection{Loop nest optimisations}
 Here we have a more optimized version \cite{dataloc:1} \cite{looptil:1}
-\cite{looptilpar:1},  with many optimization techniques used:
+\cite{looptilpar:1},  with many optimisation techniques used:
 \begin{lstlisting}
 int ib = 10, kb = 10;
 for (ii = 0; ii < N; ii += ib) {
@@ -129,18 +129,18 @@ for (ii = 0; ii < N; ii += ib) {
 \end{lstlisting}
 The first technique used here is register level tiling, which is why we see
 four different accumulators, and by doing this we reuse every loaded value from
-matrices $a$ and $b$ twice. which reduces the ammount of memory loads
+matrices $a$ and $b$ twice. which reduces the amount of memory loads
 necessary.\\
 
-Next we have the $i$ loop blocking. And by blocking we mean the adiition of
+Next we have the $i$ loop blocking. And by blocking we mean the addition of
 a second loop ($ii$ loop) that takes larger steps ($ib$) while keeping the
 original loop to go through the gaps left by the bigger loop. this technique is
 used to increase the locality of the data since we are parsing each matrix in
 rectangular strips. We also have the $k$ loop blocked by a factor ($kb$) which
 means we'll be parsing the matrices in square strips of sizes $ib$x$kb$, this
-will have a major impact on the perfomance since each square will be reused
-multiple times, which reduces the ammount of memory loads necessary
-significantly. These loop blockings require some further treatment in order for
+will have a major impact on the performance since each square will be reused
+multiple times, which reduces the amount of memory loads necessary
+significantly. These loop blocks require some further treatment in order for
 it to function correctly, for example here we need to explicitly tell it to
 initialize the accumulators at $kk==0$ because we aren't viewing the values
 contiguously. There are some more special cases that have been omitted from
@@ -149,8 +149,8 @@ and $kb$.\\
 
 And here we can see some major performance improvements over the naive version.
 as well as the fact that these techniques depend heavily on the eventual
-compiler's optimizations, because the performance spikes on when the compiler
-optimizations are turned off (optimization level -O0).
+compiler's optimisations, because the performance spikes on when the compiler
+optimisations are turned off (optimisation level -O0).
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{plot/with_opt.pdf}
@@ -165,7 +165,7 @@ pragma directives, the 'omp' part is to specify the OpenMP directives, and
 next we specify the variables that should be either shared or made private, to
 avoid data racing, and we also have the scheduling method for the
 parallelization, which in this case is static, meaning the loop's iterations
-will be distributed uniformely between the treads.
+will be distributed uniformly between the treads.
 
 \begin{lstlisting}
 #pragma omp parallel for shared(a, b, res) \\
@@ -183,15 +183,15 @@ for(i=0; i<N; i++) {
 \end{lstlisting}
 
 And as visible in the graph, there is a 4 time increase in performance as
-expected from 4 core machine.
+expected from a 4 core machine.
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{plot/parallel.pdf}
     \caption{With OpenMP parallelization}
     \label{fig:parallel}
 \end{figure}
 
-\subsection{Perallelization and optimizations}
-Here we have both the parallel part and optimization techniques.
+\subsection{Parallelization and optimisations}
+Here we have both the parallel part and optimisation techniques.
 
 \begin{lstlisting}
 int ib = 10, kb = 10;
@@ -226,58 +226,57 @@ for (ii = 0; ii < N; ii += ib) {
 }
 \end{lstlisting}
 
-And we can see that the optimization techniques scale up with the
+And we can see that the optimisation techniques scale up with the
 parallelization, which implies that there are no bottlenecks.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{plot/with_opt+parallel.pdf}
-    \caption{Avec les optimisations et en paralléle}
+    \caption{With the optimisation and in parallel}
     \label{fig:with_opt+parallel}
 \end{figure}
 
-\section{Algorithm comparaison}
-Here we compare the four different programs on different compiler optimization
+\section{Algorithm comparison}
+Here we compare the four different programs on different compiler optimisation
 levels.
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{plot/compare_O0.pdf}
-    \caption{Comparaison with GCC -O0 (on a logarithmic scale)}
+    \caption{comparison with GCC -O0 (on a logarithmic scale)}
     \label{fig:compare_O0}
 \end{figure}
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{plot/compare_O2.pdf}
-    \caption{Comparaison with GCC -O2 (on a logarithmic scale)}
+    \caption{comparison with GCC -O2 (on a logarithmic scale)}
     \label{fig:compare_O2}
 \end{figure}
 
 We can notice that the parallel naive version is less affected by the compiler
-optimization level, and the loop tiling has a better performance than just
+optimisation level, and the loop tiling has a better performance than just
 direct parallelization of the code, and of course the combination of the two
 gives a major performance improvement.
 
-\section{Application}
 \section{Code analysis}
-With the goal of optimizing the neural network simulator promethe, i started by
+With the goal of optimizing the neural network simulator promethe, I started by
 trying to parallelize parts of the code using OpenMP, after setting up the
 necessary compiler flags and libraries for OpenMP.\\
 
-To benchmark the performance i set up a simple simulation with a hebbian NN
+To benchmark the performance I set up a simple simulation with a hebbian NN
 and a noise function as an input, along with a function to measure the elapsed
 time of each update (f\_display\_framerate).\\
 
-The first bit of code was in prom\_user/src/main.c where i set up OpenMP to run
+The first bit of code was in prom\_user/src/main.c where I set up OpenMP to run
 the procedure responsible for launching the update functions of the neural
 networks in parallel, and here the performance didn't scale up with the
 number of threads (with 4 threads ~20\% improvement).\\
 
 After thorough examination of the function reponsible for updating the
-neurones's coefficients, whichperformed a dot product of the neurones
-coefficients with their outputs. Theproblem appeared to come from the memory
-access to the neurones coefficients, aftera simple test using a simpler 2d
+neurons's coefficients, which performed a dot product of the neurons
+coefficients with their outputs. The problem appeared to come from the memory
+access to the neurons coefficients, after a simple test using a simpler 2d
 array as a replacement for the coefficients' values. the problem seemed to be
 fixed along with a much better execution time.\\
 
-To analyse the cause of this problem i did some research on the subject where
+To analyze the cause of this problem I did some research on the subject where
 it turned out that the problem was caused by the size of the coefficients structure
 (type\_coeff)which was 56 bytes long, this size made it so that each memory
 access operation had to be retrieved from the main memory (as opposed to the
@@ -291,12 +290,12 @@ requests.
 
 \section{Cause of the problem}
 To track down the source of the problem, that is, what is causing the
-coefficient's structure (type\_coeff) to throttle the performance. So to start
-we are going to see basic overview of how the cache and cache lines work, and
+coefficient's structure (type\_coeff) to throttle the performance.
+We are going to see basic a overview of how the cache and cache lines work, and
 how data is loaded into it.
 
 \subsection{The cache memory}
-The cache is a hardware coponent usually located in the CPU that allows much
+The cache is a hardware component usually located in the CPU that allows much
 faster access times to memory at the expense of the storage size.\\
 
 The main different between the cache and the main memory are the cells that
@@ -325,7 +324,7 @@ try the L3 and then we finally try the main memory (DRAM) if even that misses.
 
 \subsubsection{DRAM vs SRAM}
 The dynamic random-access memory (DRAM) and static random-access memory (SRAM)
-cells differ on an architechtural level (Figure:\ref{fig:dramsram}), where each 
+cells differ on an architectural level (Figure:\ref{fig:dramsram}), where each 
 cell of the SRAM is constructed of 6 cleverly placed transistors. Whereas the DRAM
 uses a single transistor and a capacitor, the capacitor in where the actual bit of
 data is stored which is the cause of slow access time since the capacitor needs
@@ -337,12 +336,12 @@ DRAM is slower. \cite{dramsram:1}
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{plot/dram_sram.jpg}
-    \caption{Cell architechture of DRAM and SRAM}
+    \caption{Cell architecture of DRAM and SRAM}
     \label{fig:dramsram}
 \end{figure}
 
 \subsubsection{Cache lines}
-Cache lines are the smallest block of memory that we can access \textit{ie:}
+Cache lines are the smallest block of memory that we can access \textit{i.e.}
 load into the cache, they are usually 64 bytes or 32 bytes \ref{fig:cachelines}
 the idea is that if we even load a single byte from the memory, the entire
 cache line that byte belongs to is loaded into the cache. Meaning if we try
@@ -351,7 +350,7 @@ we can simply retrieve it from the cache instead.\\
 
 The cache line is the same for all different levels of the cache, what changes
 however is of course how fast the memory level gets filled, the first level
-having the least ammount of storage usually fills up first and so we have less
+having the least amount of storage usually fills up first and so we have less
 L1 hits than L2 or L3 overall.\\
 
 \begin{figure}[H]
@@ -365,7 +364,7 @@ L1 hits than L2 or L3 overall.\\
 From we can already see that the use of an array of the (type\_coeff) with
 a size of 56 bytes would fill almost the entirety of the cache line
 \ref{fig:cachedist}, meaning overall we'll have almost no cache hits, even if
-we access the coefficients array elements contiguosly (\textit{ex:} coeff[0]
+we access the coefficients array elements contigously (\textit{ex:} coeff[0]
 then coeff[1] then coeff[2] and so on).
 
 \begin{figure}[H]
@@ -422,12 +421,12 @@ typedef struct type_coeff {
 } type_coeff;
 \end{lstlisting}
 
-And we would also need to change the type\_neurone structure to have a single
+And we would also need to change the type\_neuron structure to have a single
 element of type\_coeff (instead of a pointer):
 \begin{lstlisting}[numbers=none,frame=none,xleftmargin=3em, multicols=2]
 OLD STRUCT:
 
-typedef struct type_neurone {
+typedef struct type_neuron {
    float seuil;
 	int flag;
 	float last_activation;
@@ -442,10 +441,10 @@ typedef struct type_neurone {
 	float posz;
 	type_coeff *coeff;    ---->
 	type_coeff *nsor;     ---->
-} type_neurone;
+} type_neuron;
 NEW STRUCT:
 
-typedef struct type_neurone {
+typedef struct type_neuron {
    float seuil;
 	int flag;
 	float last_activation;
@@ -460,7 +459,7 @@ typedef struct type_neurone {
 	float posz;
 	type_coeff coeff;
 	type_coeff nsor;
-} type_neurone;
+} type_neuron;
 
 \end{lstlisting}
 
@@ -473,25 +472,25 @@ the code, two float matrices for the 'val' and 'entree' (named respectively
 coeff\_vals and coeff\_entrees) fields of the coefficients
 were used instead, and were initialized and updated with the same values as the
 actual values from the type\_coeff structure. The changes are limited to the
-hebbian neural network (prom\_user/src/NN\_Core/classique\_rn/trad\_neurone.c)
+hebbian neural network (prom\_user/src/NN\_Core/classique\_rn/trad\_neuron.c)
 and the kohonen self-organizing map (same directory in kohonen.c). and the
 results seem to reflect that the changes solved the bottleneck and the code can
 run in parallel (Figure:\ref{fig:hebbres}) (Figure:\ref{fig:kohonenres}). 
 
 \begin{figure}[h]
     \includegraphics[width=\linewidth]{plot/hebbres.pdf}
-    \caption{Results of the optimization on hebbian NN}
+    \caption{Results of the optimisation on hebbian NN}
     \label{fig:hebbres}
 \end{figure}
 
 \subsection{tests}
 To verify that the program continues to function correctly some tests were created
 that compare results (coefficient values) of the original version of the program
-(without the optimization) with the new version.\\
+(without the optimisation) with the new version.\\
 
 In order to do this the two versions of the program  were used to compile a test
 .script file with their cc\_leto (used to generate a .res file used when
-executing the promethe simulator) that promps for a seed for the random number
+executing the promethe simulator) that prompts for a seed for the random number
 generator, these programs when launched (using promethe) generate a .SAVE file
 that contains a text version of the coefficients and their values. The idea of
 the test is that given the same random seed, these two .SAVE files should be
@@ -499,13 +498,13 @@ the same for the two versions.
 
 For now these tests still need some more work done on them since they are not
 working. There is still a lot of work to be done here in order to utilize the new
-optimization and there's the question of how much more \textit{should} be done, 
+optimisation and there's the question of how much more \textit{should} be done, 
 since these are major changes to a very large code base, and would therefore
 require a lot of time to implement.
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth]{plot/kohonenres.pdf}
-    \caption{Results of the optimization on kohonen SOM}
+    \caption{Results of the optimisation on kohonen SOM}
     \label{fig:kohonenres}
 \end{figure}
 
@@ -520,7 +519,7 @@ on the cache.\\
 
 This is a result of the fact that we only use a few fields of the structure at
 any given time (we only use the 'val' and 'entree' fields when updating hebbian
-NN neurones), so most of the cache line is not used and wasted. However when there
+NN neurons), so most of the cache line is not used and wasted. However when there
 are multiple arrays of each field (floats) or small collection of
 fields, we would have more elements of the same type in our cache lines and
 therefore more hits of accelerated memory access of the CPU's cache.
